@@ -18,8 +18,12 @@ class Game
     end
 
     while true
-      user.validr = ''
       puts board.render(a, b, c)
+      if (a[1..3] && b[1..3] && c[1..3]) == ['x','x','x']
+        puts "Board is filled, that's game!"
+        exit
+      end
+      user.validr = ''
 
       puts 'where you want the X at?'
 
