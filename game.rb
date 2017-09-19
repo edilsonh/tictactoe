@@ -1,44 +1,33 @@
 require 'terminal-table'
-a = []
-b = []
-c = []
-
-for i in 1..3
-  a[i] = ' '
-  b[i] = ' '
-  c[i] = ' '
-end
-
-while true
-  table = Terminal::Table.new do |t|
-    t << [a[1], a[2] ,a[3]]
-    t << :separator
-    t.add_row [b[1], b[2], b[3]]
-    t.add_separator
-    t.add_row [c[1], c[2], c[3]]
+require_relative 'board'
+require_relative 'user'
+class Game
+  attr_accessor :a, :b, :c, :board, :user
+  def initialize
+    @a = []
+    @b = []
+    @c = []
+    @board = Board.new
+    @user = User.new
   end
-  puts table
-
-  puts 'where you want the X at'
-
-  answer = gets
-  validr = ''
-  for i in 1..3
-    if answer.chomp.downcase == "a#{i}"
-      a[i] = 'x'
-      validr = true
-      break
-    elsif answer.chomp.downcase == "b#{i}"
-      b[i] = 'x'
-      validr = true
-      break
-    elsif answer.chomp.downcase == "c#{i}"
-      c[i] = 'x'
-      validr = true
-      break
+  def start
+    for i in 1..3
+      a[i] = ' '
+      b[i] = ' '
+      c[i] = ' '
     end
-  end
-  if validr != true
-    puts "Invalid input, try again!"
+
+    while true
+      user.validr = ''
+      puts board.render(a, b, c)
+
+      puts 'where you want the X at?'
+
+      user.get_position
+      user.mark_x(a, b, c)
+      if user.validr != true
+        puts "\nInvalid input, try again!\n\n"
+      end
+    end
   end
 end
