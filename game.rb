@@ -22,7 +22,7 @@ while true
   puts 'where you want the X at'
 
   answer = gets
-
+  validr = ''
   for i in 1..3
     if answer.chomp.downcase == "a#{i}"
       a[i] = 'x'
