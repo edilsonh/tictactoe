@@ -21,25 +21,24 @@ while true
 
   puts 'where you want the X at'
 
-  while true
-    answer = gets
-
-    if answer.chomp == 'a1'
-      break
-    elsif answer.chomp == 'b1'
-      break
-    elsif
-      puts "invalid response, try again"
-    end
-  end
+  answer = gets
 
   for i in 1..3
-    if answer.chomp == "a#{i}"
+    if answer.chomp.downcase == "a#{i}"
       a[i] = 'x'
-    elsif answer.chomp == "b#{i}"
+      validr = true
+      break
+    elsif answer.chomp.downcase == "b#{i}"
       b[i] = 'x'
-    elsif answer.chomp == "c#{i}"
+      validr = true
+      break
+    elsif answer.chomp.downcase == "c#{i}"
       c[i] = 'x'
+      validr = true
+      break
     end
+  end
+  if validr != true
+    puts "Invalid input, try again!"
   end
 end
