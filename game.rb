@@ -26,12 +26,13 @@ class Game
     turn_counter = 0
 
     while true
-      puts "\n\n"
+      puts "\n"
       puts board.render(a, b, c)
+      board.winner(a, b, c, opponent)
 
       while user.validr != true
         user.validr = ''
-        puts "#{user.player_1}, where you want the X at?"
+        puts "\n#{user.name}, where you want the X at?"
         user.get_position
         user.mark_x(a, b, c)
         if user.validr == true
@@ -50,9 +51,11 @@ class Game
         exit
       end
 
+      board.winner(a, b, c, user)
+
       while opponent.validr != true
         opponent.validr = ''
-        puts "\n#{opponent.player_2}, where you want the O at?"
+        puts "\n#{opponent.name}, where you want the O at?"
         opponent.get_position
         opponent.mark_o(a, b, c)
         if opponent.validr == true
@@ -64,6 +67,7 @@ class Game
         end
         puts board.render(a, b, c)
       end
+
 
       user.validr = ''
       opponent.validr = ''

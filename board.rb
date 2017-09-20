@@ -8,4 +8,18 @@ class Board
       t.add_row [c[1], c[2], c[3]]
     end
   end
+
+  def winner(a, b, c, player)
+    if player.class == User
+      mark = 'x'
+
+    elsif player.class == Opponent
+      mark = 'o'
+    end
+
+    if (a[1] == mark) && (a[2] == mark) && (a[3] == mark)
+      puts "\n#{player.name} is the winner!"
+      exit
+    end
+  end
 end
