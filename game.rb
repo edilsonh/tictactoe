@@ -34,6 +34,13 @@ class Game
       puts "#{user.player_1}, where you want the X at?"
       user.get_position
       user.mark_x(a, b, c)
+      puts board.render(a, b, c)
+
+
+      puts "\n#{opponent.player_2}, where you want the O at?"
+      opponent.get_position
+      opponent.mark_o(a, b, c)
+      puts board.render(a, b, c)
 
       if user.validr != true
         puts "\nInvalid input, try again!\n\n"
