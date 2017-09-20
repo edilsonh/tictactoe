@@ -30,21 +30,31 @@ class Game
         exit
       end
       user.validr = ''
+      opponent.validr = ''
 
-      puts "#{user.player_1}, where you want the X at?"
-      user.get_position
-      user.mark_x(a, b, c)
-      puts board.render(a, b, c)
-
-
-      puts "\n#{opponent.player_2}, where you want the O at?"
-      opponent.get_position
-      opponent.mark_o(a, b, c)
-      puts board.render(a, b, c)
-
-      if user.validr != true
+      while user.validr != true
+        puts "#{user.player_1}, where you want the X at?"
+        user.get_position
+        user.mark_x(a, b, c)
+        if user.validr == true
+          break
+        end
         puts "\nInvalid input, try again!\n\n"
+        puts board.render(a, b, c)
       end
+      puts board.render(a, b, c)
+
+      while opponent.validr != true
+        puts "\n#{opponent.player_2}, where you want the O at?"
+        opponent.get_position
+        opponent.mark_o(a, b, c)
+        if opponent.validr == true
+          break
+        end
+        puts "\nInvalid input, try again!\n\n"
+        puts board.render(a, b, c)
+      end
+
     end
   end
 end
