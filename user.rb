@@ -17,27 +17,30 @@ class User
   def mark_x(a, b, c)
     for i in 1..3
       if answer == "a#{i}"
-        @validr = true
         if a[i] != " "
+          @validr = "taken"
           puts "\nPosition taken, try again!\n\n"
           break
         end
+        @validr = true
         a[i] = 'x'
         break
       elsif answer == "b#{i}"
-        @validr = true
         if b[i] != " "
+          @validr = "taken"
           puts "\nPosition taken, try again!\n\n"
           break
         end
+        @validr = true
         b[i] = 'x'
         break
       elsif answer == "c#{i}"
-        @validr = true
         if c[i] != " "
+          @validr = "taken"
           puts "\nPosition taken, try again!\n\n"
           break
         end
+        @validr = true
         c[i] = 'x'
         break
       end
