@@ -20,8 +20,21 @@ class Game
       c[i] = ' '
     end
 
+    while true
+      puts "Will this be a 1 or 2 player game?(type 1 or 2)"
+      players = gets.chomp
+      if (players == "1" ||  players == "2")
+        break
+      end
+      puts "\nInvalid input, try again!\n\n"
+    end
     user.get_name
-    opponent.get_name
+
+    if players == "2"
+      opponent.get_name
+    else
+      opponent.name = "Computer"
+    end
 
     turn_counter = 0
 
@@ -44,6 +57,8 @@ class Game
         end
         puts board.render(a, b, c)
       end
+      user.validr = ''
+      puts "\n"
       puts board.render(a, b, c)
 
       if turn_counter == 9
@@ -52,25 +67,46 @@ class Game
       end
 
       board.winner(a, b, c, user)
-
-      while opponent.validr != true
-        opponent.validr = ''
-        puts "\n#{opponent.name}, where you want the O at?"
-        opponent.get_position
-        opponent.mark_o(a, b, c)
-        if opponent.validr == true
-          turn_counter += 1
-          break
-        elsif opponent.validr == "taken"
-        else
-          puts "\nInvalid input, try again!\n\n"
+      if players == "2"
+        while opponent.validr != true
+          opponent.validr = ''
+          puts "\n#{opponent.name}, where you want the O at?"
+          opponent.get_position
+          opponent.mark_o(a, b, c)
+          if opponent.validr == true
+            turn_counter += 1
+            break
+          elsif opponent.validr == "taken"
+          else
+            puts "\nInvalid input, try again!\n\n"
+          end
+          puts board.render(a, b, c)
         end
-        puts board.render(a, b, c)
+        opponent.validr = ''
+      else
+        jayjay = ''
+        for i in 0..2
+          for j in 1..3
+            if [a, b, c][i][j] == ' '
+              [a, b, c][i][j] = 'o'
+              jayjay = true
+              break
+            end
+          end
+          if jayjay == true
+            break
+          end
+        end
+        print "\nComputer chooses"
+        sleep 0.4
+        print "."
+        sleep 0.4
+        print "."
+        sleep 0.4
+        print "."
+        sleep 0.4
+        puts ''
       end
-
-
-      user.validr = ''
-      opponent.validr = ''
 
     end
   end
