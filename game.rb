@@ -17,6 +17,8 @@ class Game
       c[i] = ' '
     end
 
+    user.get_name
+
     while true
       puts board.render(a, b, c)
       if (a[1..3] && b[1..3] && c[1..3]) == ['x','x','x']
@@ -25,7 +27,7 @@ class Game
       end
       user.validr = ''
 
-      puts 'where you want the X at?'
+      puts "#{user.player_1}, where you want the X at?"
 
       user.get_position
       user.mark_x(a, b, c)
