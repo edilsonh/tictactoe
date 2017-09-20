@@ -21,5 +21,40 @@ class Board
       puts "\n#{player.name} is the winner!"
       exit
     end
+
+    if (b[1] == mark) && (b[2] == mark) && (b[3] == mark)
+      puts "\n#{player.name} is the winner!"
+      exit
+    end
+
+    if (c[1] == mark) && (c[2] == mark) && (c[3] == mark)
+      puts "\n#{player.name} is the winner!"
+      exit
+    end
+
+    if (a[1] == mark) && (b[2] == mark) && (c[3] == mark)
+      puts "\n#{player.name} is the winner!"
+      exit
+    end
+
+    if (a[3] == mark) && (b[2] == mark) && (c[1] == mark)
+      puts "\n#{player.name} is the winner!"
+      exit
+    end
+
+    if (a[1] == mark) && (b[1] == mark) && (c[1] == mark)
+      puts "\n#{player.name} is the winner!"
+      exit
+    end
+
+    if (a[2] == mark) && (b[2] == mark) && (c[2] == mark)
+      puts "\n#{player.name} is the winner!"
+      exit
+    end
+
+    if (a[3] == mark) && (b[3] == mark) && (c[3] == mark)
+      puts "\n#{player.name} is the winner!"
+      exit
+    end
   end
 end
