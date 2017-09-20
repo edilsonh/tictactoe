@@ -1,13 +1,13 @@
 require_relative 'game'
 class User
-  attr_accessor :validr, :answer, :player_1
+  attr_accessor :validr, :answer, :name
   def initialize
     @validr = ''
   end
 
   def get_name
     puts "Player 1, what is your name?"
-    @player_1 = gets.chomp
+    @name = gets.chomp
   end
 
   def get_position
