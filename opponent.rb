@@ -6,7 +6,7 @@ class Opponent
   end
 
   def get_name
-    puts "Player 2, what is your name?"
+    puts "\nPlayer 2, what is your name?"
     @name = gets.chomp
   end
 
